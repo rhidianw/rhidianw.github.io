@@ -17,8 +17,11 @@
   var R_TIN = 99, R_TOUT = 107, R_DIN = 162, R_DOUT = 170;
   var R_RING = 188;                    // outer number ring
   var LAUNCH = { x: 200, y: 420 };     // where the dart leaves your hand
-  var POWER_K = 2.2;                   // pull pixels -> travel pixels
-  var MAX_PULL = 130;
+  // Max travel must clear the whole board with room to overshoot:
+  // launch to the top of the double 20 is 390 units, so MAX_PULL * POWER_K
+  // needs to beat that comfortably. 160 * 3.1 = 496.
+  var POWER_K = 3.1;                   // pull units -> travel units
+  var MAX_PULL = 160;
 
   // Clockwise from the top.
   var ORDER = [20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5];
@@ -188,7 +191,7 @@
     evt.preventDefault();
     dragging = true;
     start = toSvg(evt);
-    svg.setPointerCapture && svg.setPointerCapture(evt.pointerId);
+    try { svg.setPointerCapture(evt.pointerId); } catch (e) {}
   }
 
   function move(evt) {
@@ -220,7 +223,7 @@
     }
 
     // A little wobble, worse the harder you throw.
-    var wob = 2 + power / 45;
+    var wob = 1.5 + power / 70;
     var x = LAUNCH.x + pull.x * POWER_K + (Math.random() - 0.5) * 2 * wob;
     var y = LAUNCH.y + pull.y * POWER_K + (Math.random() - 0.5) * 2 * wob;
     land(x, y);
