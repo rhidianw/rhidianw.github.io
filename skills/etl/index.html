@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETL & pipeline design — Rhidian Williams</title>
+  <meta name="description" content="What ETL & pipeline design is, and where I use it.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">rhidian.exe</a>
+    <span class="links">
+      <a href="/">Home</a>
+      <a href="/cv/">CV</a>
+      <a href="/darts/">Darts</a>
+    </span>
+  </nav>
+
+  <main>
+    <p class="skill-back"><a href="/cv/" id="back-link">← back to the CV</a></p>
+
+    <div class="about-box">
+      <h1>ETL &amp; pipeline design</h1>
+      <div class="sparkles">✦ ✧ ✦</div>
+    </div>
+
+    <section class="work">
+      <h2>What it is</h2>
+      <p>Extract, Transform, Load — getting data out of source systems, reshaping it, and putting it somewhere it can be used. ELT reverses the last two, loading raw and transforming in the warehouse. The arguments about which letter goes where are less interesting than they sound.</p>
+    </section>
+
+    <section class="projects">
+      <h2>Where I use it</h2>
+      <p>This is the spine of my job. Scheduled jobs pulling from an ERP, marketplace APIs, an integration platform and partner file drops, landing to staging, then loading into the warehouse.</p>
+    </section>
+
+    <section class="plain">
+      <h2>The bit people get wrong</h2>
+      <p>That the hard part is moving the data. The hard part is what happens when it goes wrong at 3am — whether a half-finished run leaves the warehouse in a broken state, and whether you can simply run it again. Pipelines should be rerunnable without fear. Most of the design effort goes there.</p>
+    </section>
+
+    <p class="skill-back"><a href="/cv/" id="back-link-2">← back to the CV</a></p>
+  </main>
+
+  <footer><a href="/">rhidian.exe</a></footer>
+
+  <script src="/assets/skills.js" defer></script>
+  <script src="/assets/oche.js" defer></script>
+</body>
+</html>

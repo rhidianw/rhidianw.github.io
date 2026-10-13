@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MariaDB / MySQL — Rhidian Williams</title>
+  <meta name="description" content="What MariaDB / MySQL is, and where I use it.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">rhidian.exe</a>
+    <span class="links">
+      <a href="/">Home</a>
+      <a href="/cv/">CV</a>
+      <a href="/darts/">Darts</a>
+    </span>
+  </nav>
+
+  <main>
+    <p class="skill-back"><a href="/cv/" id="back-link">← back to the CV</a></p>
+
+    <div class="about-box">
+      <h1>MariaDB / MySQL</h1>
+      <div class="sparkles">✦ ✧ ✦</div>
+    </div>
+
+    <section class="work">
+      <h2>What it is</h2>
+      <p>A relational database. MariaDB is a fork of MySQL that stayed open source after Oracle's acquisition; the two remain broadly compatible. It is the unglamorous, extremely well-understood workhorse of a great many systems.</p>
+    </section>
+
+    <section class="projects">
+      <h2>Where I use it</h2>
+      <p>It is the group reporting warehouse at Nexus Brands — every downstream sales, stock, margin and catalogue report reads from it.</p>
+    </section>
+
+    <section class="plain">
+      <h2>The bit people get wrong</h2>
+      <p>That it is interchangeable with other SQL databases. It is nearly so, until it very much is not: MariaDB has no FULL OUTER JOIN, so you emulate it with a LEFT JOIN unioned to a RIGHT JOIN. Small differences like that are exactly where a query ported from somewhere else quietly returns the wrong answer.</p>
+    </section>
+
+    <p class="skill-back"><a href="/cv/" id="back-link-2">← back to the CV</a></p>
+  </main>
+
+  <footer><a href="/">rhidian.exe</a></footer>
+
+  <script src="/assets/skills.js" defer></script>
+  <script src="/assets/oche.js" defer></script>
+</body>
+</html>
