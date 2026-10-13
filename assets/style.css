@@ -113,9 +113,6 @@ section, .about-box {
 .about-box        { box-shadow: 6px 6px 0 var(--sage); }
 section.work      { box-shadow: 6px 6px 0 var(--peach); }
 section.projects  { box-shadow: 6px 6px 0 var(--blue); }
-section.reading   { box-shadow: 6px 6px 0 var(--mint); }
-section.watching  { box-shadow: 6px 6px 0 var(--plum); }
-section.playing   { box-shadow: 6px 6px 0 var(--sage); }
 section.plain     { box-shadow: 6px 6px 0 var(--mint); }
 
 /* ---- headings ------------------------------------------------------ */
@@ -146,15 +143,13 @@ h3 {
   margin: 1.25rem 0 0.4rem;
 }
 
-.list-title, .chart h4, .four-title {
+.list-title {
   font-family: 'Jersey 15', monospace;
   font-size: 22px;
   font-weight: 400;
   color: var(--muted);
 }
 .list-title { margin: 1rem 0 0.35rem; }
-.chart h4   { margin: 1.25rem 0 0.5rem; }
-.four-title { margin: 0.25rem 0 0.5rem; }
 
 /* ---- about head ---------------------------------------------------- */
 .about-head {
@@ -208,150 +203,6 @@ h3 {
   color: var(--muted);
 }
 
-/* ---- bookshelf ----------------------------------------------------- */
-.bookshelf {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 6px;
-  padding: 0 10px;
-  border-bottom: 5px solid var(--ink);
-  margin-bottom: 1.25rem;
-  min-height: 158px;
-}
-.spine {
-  display: block;
-  border: 3px solid var(--ink);
-  box-shadow: inset 2px 3px 0 rgba(255,255,255,0.35);
-  transition: transform 0.08s steps(2);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-family: 'VT323', monospace;
-  font-size: 16px;
-  line-height: 1;
-  color: #37404f !important;
-  text-decoration: none;
-  text-align: center;
-  padding: 6px 0;
-  overflow: hidden;
-}
-.spine:hover { transform: translateY(-6px); background-image: none; }
-.spine.lean {
-  transform: rotate(7deg);
-  transform-origin: bottom right;
-  margin-left: 8px;
-}
-.spine.lean:hover { transform: rotate(7deg) translateY(-6px); }
-
-/* ---- goal meter ---------------------------------------------------- */
-.goal-meter { margin-bottom: 1.25rem; }
-.goal-meter .track {
-  background: var(--cream);
-  border: 3px solid var(--ink);
-  height: 24px;
-}
-.goal-meter .fill {
-  background: var(--mint);
-  height: 100%;
-  border-right: 3px solid var(--ink);
-  max-width: 100%;
-}
-.goal-meter .fill.done { border-right: none; }
-.goal-meter .glabel {
-  font-family: 'Jersey 15', monospace;
-  font-size: 20px;
-  color: var(--muted);
-  margin-bottom: 0.25rem;
-  display: flex;
-  justify-content: space-between;
-}
-
-/* ---- media lists --------------------------------------------------- */
-.media-list { list-style: none; margin-bottom: 1rem; }
-.media-list li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  padding: 0.3rem 0;
-  border-bottom: 2px dotted var(--sage);
-}
-.media-list .mtitle { color: var(--ink); }
-.media-meta  { color: var(--muted); flex: 1; font-size: 19px; }
-.media-stars {
-  color: var(--peach);
-  white-space: nowrap;
-  font-family: 'DotGothic16', monospace;
-  font-size: 17px;
-}
-
-/* ---- four grid ----------------------------------------------------- */
-.four-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.9rem;
-  margin-bottom: 1rem;
-}
-.four-grid figure { text-align: center; margin: 0; }
-.four-grid .poster {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  border: 3px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--sage);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 6px;
-  font-size: 17px;
-  line-height: 1.1;
-  color: #37404f;
-  overflow: hidden;
-}
-.four-grid img.poster { object-fit: cover; padding: 0; display: block; }
-.four-grid figcaption {
-  color: var(--peach);
-  margin-top: 0.5rem;
-  font-size: 15px;
-  letter-spacing: 2px;
-  font-family: 'DotGothic16', monospace;
-}
-
-/* ---- charts -------------------------------------------------------- */
-.chart svg { width: 100%; height: auto; display: block; }
-.chart .bar { fill: var(--mint); stroke: var(--ink); stroke-width: 3; }
-.chart .bar.alt { fill: var(--plum); }
-.chart .axis { stroke: var(--ink); stroke-width: 3; }
-.chart .cap, .chart .tick {
-  fill: var(--muted);
-  font-family: 'VT323', monospace;
-  font-size: 17px;
-}
-.chart-tip {
-  display: none;
-  position: absolute;
-  z-index: 10;
-  background: var(--box);
-  color: var(--ink);
-  border: 3px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--blue);
-  padding: 0.35rem 0.6rem;
-  font-family: 'VT323', monospace;
-  font-size: 19px;
-  pointer-events: none;
-  max-width: 260px;
-}
-
-/* ---- trophies ------------------------------------------------------ */
-.trophy-row { display: flex; flex-wrap: wrap; gap: 0.6rem 1.1rem; margin-bottom: 0.5rem; }
-.tchip { font-size: 20px; white-space: nowrap; }
-.tchip i {
-  display: inline-block;
-  width: 13px; height: 13px;
-  border: 3px solid var(--ink);
-  margin-right: 6px;
-  vertical-align: -1px;
-}
-
 /* ---- CV ------------------------------------------------------------ */
 .cv-entry { padding: 0.65rem 0; border-bottom: 2px dotted var(--sage); }
 .cv-entry:last-child { border-bottom: none; }
@@ -377,7 +228,4 @@ footer .heart { color: var(--blue); }
   nav .links a, .theme-toggle { margin-left: 0.8rem; }
   h1 { font-size: 28px; white-space: normal; }
   section, .about-box { padding: 1rem 1.1rem; }
-  .four-grid { gap: 0.5rem; }
-  .four-grid .poster { border-width: 2px; box-shadow: 3px 3px 0 var(--sage); font-size: 13px; }
-  .four-grid figcaption { font-size: 11px; letter-spacing: 1px; }
 }
