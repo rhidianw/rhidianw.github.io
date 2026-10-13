@@ -145,7 +145,7 @@
     shots.appendChild(g);
     inFlight.push(g);
 
-    if (elScore) elScore.textContent = hit.score;
+    if (elScore) { elScore.classList.remove('idle'); elScore.textContent = hit.score; }
     if (elLabel) elLabel.textContent = hit.label;
     if (elThrown) elThrown.textContent = thrown;
     if (elTotal) elTotal.textContent = total;

@@ -8,18 +8,14 @@
   <link rel="icon" href="/assets/favicon.svg">
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="stylesheet" href="/assets/darts.css">
-  <script>
-    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-  </script>
 </head>
-<body>
+<body class="oche">
   <nav>
     <a class="brand" href="/">rhidian.exe</a>
     <span class="links">
       <a href="/">Home</a>
       <a href="/cv/">CV</a>
       <a href="/darts/" class="active">Darts</a>
-      <button class="theme-toggle" aria-label="Toggle light and dark theme">☾</button>
     </span>
   </nav>
 
@@ -39,7 +35,7 @@
       </div>
 
       <div class="d-hit">
-        <span id="d-score">—</span>
+        <span id="d-score" class="idle">00</span>
         <span id="d-label">have a throw</span>
       </div>
       <p id="d-fact">Hit a segment you have not hit before and I will tell you something.</p>
@@ -65,6 +61,6 @@
 
   <script src="/assets/darts-data.js" defer></script>
   <script src="/assets/darts.js" defer></script>
-  <script src="/assets/theme.js" defer></script>
+  <script src="/assets/oche.js" defer></script>
 </body>
 </html>

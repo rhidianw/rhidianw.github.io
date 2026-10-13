@@ -1,12 +1,124 @@
 /* ---------------------------------------------------------------------
-   Styles for darts.exe and the rankings page. Loaded only on /darts/.
+   The oche: a committed dartboard theme for /darts/ and /darts/rankings/.
+   Black, white, red and green — the only four colours a board has.
+
+   This deliberately overrides the site palette rather than inheriting it.
+   Because the variables are redefined on body, every component from
+   style.css re-tints automatically without needing to be rewritten.
    --------------------------------------------------------------------- */
 
-/* ---- the board ------------------------------------------------- */
+body.oche {
+  --black:  #0c0e10;
+  --panel:  #15181c;
+  --panel2: #1d2126;
+  --white:  #f4f1e8;
+  --red:    #c8102e;
+  --green:  #00703c;
+  --green-l:#2e9e63;
+  --chalk:  #8e9099;
+
+  /* remap the base stylesheet's variables onto board colours */
+  --cream: var(--black);
+  --box:   var(--panel);
+  --ink:   var(--white);
+  --blue:  var(--green-l);
+  --link:  var(--green-l);
+  --mint:  var(--green);
+  --sage:  #2c3139;
+  --peach: var(--red);
+  --plum:  var(--red);
+  --muted: var(--chalk);
+
+  background-color: var(--black);
+  position: relative;
+}
+
+/* ---- arrows in the background ------------------------------------ */
+/* A tiled field of darts, drawn once as SVG and repeated. Sits behind
+   everything, never intercepts a click. */
+body.oche::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-color: var(--black);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.09' stroke-width='2' stroke-linecap='round'%3E%3Cg transform='translate(18,52) rotate(-20)'%3E%3Cpath d='M0 0 L30 -30'/%3E%3Cpath d='M30 -30 L41 -27 M30 -30 L27 -41'/%3E%3C/g%3E%3Cg transform='translate(92,128) rotate(35)'%3E%3Cpath d='M0 0 L26 -26'/%3E%3Cpath d='M26 -26 L36 -23 M26 -26 L23 -36'/%3E%3C/g%3E%3Cg transform='translate(118,46) rotate(-62)'%3E%3Cpath d='M0 0 L24 -24'/%3E%3Cpath d='M24 -24 L33 -21 M24 -24 L21 -33'/%3E%3C/g%3E%3C/g%3E%3Cg stroke='none'%3E%3Cpath d='M18 52 L26 50 L20 44 Z' fill='%23c8102e' fill-opacity='0.3'/%3E%3Cpath d='M92 128 L100 126 L94 120 Z' fill='%2300703c' fill-opacity='0.34'/%3E%3Cpath d='M118 46 L126 44 L120 38 Z' fill='%23ffffff' fill-opacity='0.12'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* A soft vignette so the centre column stays readable over the pattern */
+body.oche::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 38%,
+              rgba(12,14,16,0.92) 0%,
+              rgba(12,14,16,0.72) 38%,
+              rgba(12,14,16,0.35) 100%);
+}
+
+/* ---- scores scattered round the frame ----------------------------- */
+#oche-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.oche-score {
+  position: absolute;
+  font-family: 'Jersey 15', monospace;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--white);
+  opacity: 0.17;
+  white-space: nowrap;
+  user-select: none;
+}
+.oche-score.red   { color: var(--red);     opacity: 0.3; }
+.oche-score.green { color: var(--green-l); opacity: 0.28; }
+.oche-score.big   { font-size: 46px; opacity: 0.13; }
+
+/* No gutters to put them in on a narrow screen. */
+@media (max-width: 1100px) { #oche-frame { display: none; } }
+
+/* Content sits above the decoration */
+body.oche nav,
+body.oche main,
+body.oche footer { position: relative; z-index: 1; }
+
+/* ---- panels ------------------------------------------------------- */
+body.oche nav {
+  background: var(--panel);
+  border-color: var(--white);
+  box-shadow: 5px 5px 0 var(--red);
+}
+body.oche nav .brand::before { content: '✖ '; color: var(--red); }
+body.oche nav .links a.active { color: var(--green-l); }
+body.oche nav .links a:hover  { color: var(--red); }
+
+body.oche section,
+body.oche .about-box {
+  background: var(--panel);
+  border-color: var(--white);
+}
+body.oche .about-box        { box-shadow: 6px 6px 0 var(--green); }
+body.oche section.work      { box-shadow: 6px 6px 0 var(--red); }
+body.oche section.projects  { box-shadow: 6px 6px 0 var(--green); }
+body.oche section.plain     { box-shadow: 6px 6px 0 var(--white); }
+body.oche h2::before { content: '▸ '; color: var(--red); }
+body.oche h1 .accent { color: var(--red); }
+body.oche .sparkles  { color: var(--green-l); }
+body.oche strong     { color: var(--green-l); }
+body.oche main a:hover { background: var(--red); color: var(--white); }
+
+/* ---- the board ---------------------------------------------------- */
 .board-wrap {
-  background: var(--cream);
-  border: 3px solid var(--ink);
-  box-shadow: 6px 6px 0 var(--peach);
+  background: var(--panel2);
+  border: 3px solid var(--white);
+  box-shadow: 6px 6px 0 var(--red);
   padding: 0.5rem;
   margin-bottom: 1.25rem;
   touch-action: none;          /* dragging aims, it does not scroll */
@@ -18,37 +130,37 @@
   cursor: crosshair;
 }
 
-.d-surround { fill: #1b1f27; }
-.d-dark  { fill: #2b323e; stroke: #11141a; stroke-width: 0.6; }
-.d-light { fill: #ecdfc6; stroke: #11141a; stroke-width: 0.6; }
-.d-red   { fill: #c0504d; stroke: #11141a; stroke-width: 0.6; }
-.d-green { fill: #4f8a62; stroke: #11141a; stroke-width: 0.6; }
+.d-surround { fill: #050607; }
+.d-dark  { fill: #0c0e10; stroke: #000; stroke-width: 0.6; }
+.d-light { fill: #f4f1e8; stroke: #000; stroke-width: 0.6; }
+.d-red   { fill: #c8102e; stroke: #000; stroke-width: 0.6; }
+.d-green { fill: #00703c; stroke: #000; stroke-width: 0.6; }
 
 .d-num {
-  fill: #ecdfc6;
+  fill: #f4f1e8;
   font-family: 'Jersey 15', monospace;
   font-size: 17px;
 }
 
-/* ---- aiming ----------------------------------------------------- */
-.d-aimline { stroke: var(--peach); stroke-width: 2.5; stroke-dasharray: 6 5; }
-.d-aimdot  { fill: none; stroke: var(--peach); stroke-width: 2.5; }
-.d-hand    { fill: var(--peach); }
-.d-ptrack  { fill: none; stroke: var(--ink); stroke-width: 2.5; }
-.d-pfill   { fill: var(--peach); }
+/* ---- aiming ------------------------------------------------------- */
+.d-aimline { stroke: #c8102e; stroke-width: 2.5; stroke-dasharray: 6 5; }
+.d-aimdot  { fill: none; stroke: #c8102e; stroke-width: 2.5; }
+.d-hand    { fill: #c8102e; }
+.d-ptrack  { fill: none; stroke: var(--white); stroke-width: 2.5; }
+.d-pfill   { fill: #c8102e; }
 
-.d-oche { stroke: var(--muted); stroke-width: 2; stroke-dasharray: 4 6; }
-.d-hand-rest { fill: var(--muted); }
+.d-oche { stroke: var(--chalk); stroke-width: 2; stroke-dasharray: 4 6; }
+.d-hand-rest { fill: var(--chalk); }
 .d-oche-label {
-  fill: var(--muted);
+  fill: var(--chalk);
   font-family: 'VT323', monospace;
   font-size: 15px;
 }
 
-.d-shaft { stroke: #ecdfc6; stroke-width: 2.5; stroke-linecap: round; }
-.d-tip   { fill: var(--peach); stroke: #11141a; stroke-width: 1.2; }
+.d-shaft { stroke: #f4f1e8; stroke-width: 2.5; stroke-linecap: round; }
+.d-tip   { fill: #c8102e; stroke: #000; stroke-width: 1.2; }
 
-/* ---- scoreboard -------------------------------------------------- */
+/* ---- scoreboard --------------------------------------------------- */
 .d-board-stats {
   display: flex;
   gap: 1.25rem;
@@ -58,12 +170,12 @@
   padding-bottom: 0.6rem;
   margin-bottom: 0.75rem;
 }
-.d-stat { font-size: 19px; color: var(--muted); }
+.d-stat { font-size: 19px; color: var(--chalk); }
 .d-stat b {
   font-family: 'Jersey 15', monospace;
   font-weight: 400;
   font-size: 23px;
-  color: var(--ink);
+  color: var(--white);
   margin-left: 0.35rem;
 }
 
@@ -75,52 +187,49 @@
 }
 #d-score {
   font-family: 'Jersey 15', monospace;
-  font-size: 42px;
+  font-size: 46px;
   line-height: 1;
-  color: var(--peach);
+  color: var(--red);
 }
+#d-score.idle { color: var(--chalk); opacity: 0.45; }
 #d-label {
   font-family: 'Jersey 15', monospace;
   font-size: 24px;
-  color: var(--ink);
+  color: var(--green-l);
 }
 #d-fact { font-size: 20px; min-height: 3.2em; }
 
-.d-howto {
-  color: var(--muted);
-  font-size: 19px;
-  margin-bottom: 1rem;
-}
+.d-howto { color: var(--chalk); font-size: 19px; margin-bottom: 1rem; }
 
 button.d-btn {
   font-family: 'Jersey 15', monospace;
   font-size: 21px;
-  color: var(--ink);
-  background: var(--cream);
-  border: 3px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--blue);
+  color: var(--white);
+  background: var(--panel2);
+  border: 3px solid var(--white);
+  box-shadow: 3px 3px 0 var(--green);
   padding: 0.35rem 0.9rem;
   cursor: pointer;
 }
-button.d-btn:hover { background: var(--blue); color: var(--box); }
-button.d-btn:active { box-shadow: 1px 1px 0 var(--blue); transform: translate(2px, 2px); }
+button.d-btn:hover { background: var(--green); }
+button.d-btn:active { box-shadow: 1px 1px 0 var(--green); transform: translate(2px, 2px); }
 
-/* ---- the unlock -------------------------------------------------- */
+/* ---- the unlock --------------------------------------------------- */
 .d-unlock {
-  border: 3px solid var(--ink);
-  background: var(--cream);
-  box-shadow: 5px 5px 0 var(--peach);
+  border: 3px solid var(--red);
+  background: var(--panel2);
+  box-shadow: 5px 5px 0 var(--red);
   padding: 0.85rem 1.1rem;
   margin-top: 1.25rem;
 }
 .d-unlock .d-unlock-title {
   font-family: 'Jersey 15', monospace;
   font-size: 24px;
-  color: var(--peach);
+  color: var(--red);
   margin-bottom: 0.3rem;
 }
 
-/* ---- rankings table ---------------------------------------------- */
+/* ---- rankings ------------------------------------------------------ */
 .rank-list { list-style: none; }
 .rank-list li {
   display: flex;
@@ -132,29 +241,25 @@ button.d-btn:active { box-shadow: 1px 1px 0 var(--blue); transform: translate(2p
 .rank-pos {
   font-family: 'Jersey 15', monospace;
   font-size: 22px;
-  color: var(--muted);
+  color: var(--chalk);
   flex: 0 0 2.2em;
   text-align: right;
 }
-.rank-name { flex: 1; color: var(--ink); min-width: 0; }
-.rank-cash { color: var(--muted); font-size: 18px; white-space: nowrap; }
+.rank-name { flex: 1; color: var(--white); min-width: 0; }
+.rank-cash { color: var(--chalk); font-size: 18px; white-space: nowrap; }
 
 .rank-list li.fav {
-  background: var(--cream);
-  border-left: 5px solid var(--peach);
+  background: var(--panel2);
+  border-left: 5px solid var(--red);
   padding-left: 0.6rem;
 }
-.rank-list li.fav .rank-name { color: var(--peach); }
-.rank-list li.fav .rank-pos  { color: var(--ink); }
+.rank-list li.fav .rank-name { color: var(--red); }
+.rank-list li.fav .rank-pos  { color: var(--white); }
 
-.rank-key {
-  color: var(--muted);
-  font-size: 19px;
-  margin-top: 0.9rem;
-}
+.rank-key { color: var(--chalk); font-size: 19px; margin-top: 0.9rem; }
 
 @media (max-width: 480px) {
-  #d-score { font-size: 34px; }
+  #d-score { font-size: 36px; }
   .d-board-stats { gap: 0.8rem; }
   .d-stat { font-size: 17px; }
   .d-stat b { font-size: 20px; }
