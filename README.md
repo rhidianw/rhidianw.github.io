@@ -18,9 +18,12 @@ Swap `assets/photo.svg` for a real `photo.jpg` and update the `<img class="portr
 ## Preview locally
 
 ```sh
-python3 -m http.server -d . 8000
+python3 -m http.server -d ~/personal-site 8000
 # then open http://localhost:8000
 ```
+
+Note the `-d` path: without it `http.server` serves whatever directory you happen
+to be in, which is rarely the one you want.
 
 ## Publish
 
