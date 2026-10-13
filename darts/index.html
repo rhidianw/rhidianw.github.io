@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>darts.exe</title>
+  <meta name="description" content="A little darts game — pull back, let go, and learn something about me depending on what you hit.">
+  <link rel="icon" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/darts.css">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">rhidian.exe</a>
+    <span class="links">
+      <a href="/">Home</a>
+      <a href="/cv/">CV</a>
+      <a href="/darts/" class="active">Darts</a>
+      <button class="theme-toggle" aria-label="Toggle light and dark theme">☾</button>
+    </span>
+  </nav>
+
+  <main>
+    <section class="work" id="game">
+      <h2>darts.exe</h2>
+      <p class="d-howto"><strong>Pull back from the board and let go.</strong> How far you pull sets the power, the direction you pull sets the angle — throw it like a catapult, not like a dart. Every new segment you hit tells you something about me. Throw harder and your aim gets worse, which is also true in real life.</p>
+
+      <div class="board-wrap">
+        <svg id="board" viewBox="0 0 400 440" role="img" aria-label="Dartboard"></svg>
+      </div>
+
+      <div class="d-board-stats">
+        <span class="d-stat">Darts thrown <b id="d-thrown">0</b></span>
+        <span class="d-stat">Total scored <b id="d-total">0</b></span>
+        <span class="d-stat">Facts found <b id="d-found">0 / 0</b></span>
+      </div>
+
+      <div class="d-hit">
+        <span id="d-score">—</span>
+        <span id="d-label">have a throw</span>
+      </div>
+      <p id="d-fact">Hit a segment you have not hit before and I will tell you something.</p>
+
+      <p><button class="d-btn" id="d-throw" type="button">Throw for me</button></p>
+
+      <div class="d-unlock" id="d-unlock" hidden>
+        <div class="d-unlock-title">★ Treble twenty ★</div>
+        <p>You found it. Here is the thing I actually wanted to show you:</p>
+        <p><a href="/darts/rankings/">→ The world rankings, and the seven players I care about</a></p>
+      </div>
+    </section>
+
+    <section class="projects" id="why">
+      <h2>Why darts</h2>
+      <p>Because it is the only sport where the arithmetic is the hard part. Anyone can learn to put a dart roughly where they want it. Working out, under pressure, in front of a crowd, that 141 goes treble twenty, treble fifteen, double eighteen — and then actually hitting it — is a different thing entirely.</p>
+      <p>It is also a sport of almost perfect legibility. There is no formation to misread and no tactical phase to explain. A man throws a small object at a number. Either it goes in or it does not, and everybody in the building knows which immediately.</p>
+      <p>I came for the maths and stayed for the walk-ons.</p>
+    </section>
+  </main>
+
+  <footer><a href="/">← back home</a></footer>
+
+  <script src="/assets/darts-data.js" defer></script>
+  <script src="/assets/darts.js" defer></script>
+  <script src="/assets/theme.js" defer></script>
+</body>
+</html>

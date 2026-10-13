@@ -1,0 +1,162 @@
+/* ---------------------------------------------------------------------
+   Styles for darts.exe and the rankings page. Loaded only on /darts/.
+   --------------------------------------------------------------------- */
+
+/* ---- the board ------------------------------------------------- */
+.board-wrap {
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--peach);
+  padding: 0.5rem;
+  margin-bottom: 1.25rem;
+  touch-action: none;          /* dragging aims, it does not scroll */
+}
+#board {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: crosshair;
+}
+
+.d-surround { fill: #1b1f27; }
+.d-dark  { fill: #2b323e; stroke: #11141a; stroke-width: 0.6; }
+.d-light { fill: #ecdfc6; stroke: #11141a; stroke-width: 0.6; }
+.d-red   { fill: #c0504d; stroke: #11141a; stroke-width: 0.6; }
+.d-green { fill: #4f8a62; stroke: #11141a; stroke-width: 0.6; }
+
+.d-num {
+  fill: #ecdfc6;
+  font-family: 'Jersey 15', monospace;
+  font-size: 17px;
+}
+
+/* ---- aiming ----------------------------------------------------- */
+.d-aimline { stroke: var(--peach); stroke-width: 2.5; stroke-dasharray: 6 5; }
+.d-aimdot  { fill: none; stroke: var(--peach); stroke-width: 2.5; }
+.d-hand    { fill: var(--peach); }
+.d-ptrack  { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.d-pfill   { fill: var(--peach); }
+
+.d-oche { stroke: var(--muted); stroke-width: 2; stroke-dasharray: 4 6; }
+.d-hand-rest { fill: var(--muted); }
+.d-oche-label {
+  fill: var(--muted);
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+}
+
+.d-shaft { stroke: #ecdfc6; stroke-width: 2.5; stroke-linecap: round; }
+.d-tip   { fill: var(--peach); stroke: #11141a; stroke-width: 1.2; }
+
+/* ---- scoreboard -------------------------------------------------- */
+.d-board-stats {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  border-bottom: 2px dotted var(--sage);
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+.d-stat { font-size: 19px; color: var(--muted); }
+.d-stat b {
+  font-family: 'Jersey 15', monospace;
+  font-weight: 400;
+  font-size: 23px;
+  color: var(--ink);
+  margin-left: 0.35rem;
+}
+
+.d-hit {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+#d-score {
+  font-family: 'Jersey 15', monospace;
+  font-size: 42px;
+  line-height: 1;
+  color: var(--peach);
+}
+#d-label {
+  font-family: 'Jersey 15', monospace;
+  font-size: 24px;
+  color: var(--ink);
+}
+#d-fact { font-size: 20px; min-height: 3.2em; }
+
+.d-howto {
+  color: var(--muted);
+  font-size: 19px;
+  margin-bottom: 1rem;
+}
+
+button.d-btn {
+  font-family: 'Jersey 15', monospace;
+  font-size: 21px;
+  color: var(--ink);
+  background: var(--cream);
+  border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--blue);
+  padding: 0.35rem 0.9rem;
+  cursor: pointer;
+}
+button.d-btn:hover { background: var(--blue); color: var(--box); }
+button.d-btn:active { box-shadow: 1px 1px 0 var(--blue); transform: translate(2px, 2px); }
+
+/* ---- the unlock -------------------------------------------------- */
+.d-unlock {
+  border: 3px solid var(--ink);
+  background: var(--cream);
+  box-shadow: 5px 5px 0 var(--peach);
+  padding: 0.85rem 1.1rem;
+  margin-top: 1.25rem;
+}
+.d-unlock .d-unlock-title {
+  font-family: 'Jersey 15', monospace;
+  font-size: 24px;
+  color: var(--peach);
+  margin-bottom: 0.3rem;
+}
+
+/* ---- rankings table ---------------------------------------------- */
+.rank-list { list-style: none; }
+.rank-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  padding: 0.33rem 0.4rem;
+  border-bottom: 2px dotted var(--sage);
+}
+.rank-pos {
+  font-family: 'Jersey 15', monospace;
+  font-size: 22px;
+  color: var(--muted);
+  flex: 0 0 2.2em;
+  text-align: right;
+}
+.rank-name { flex: 1; color: var(--ink); min-width: 0; }
+.rank-cash { color: var(--muted); font-size: 18px; white-space: nowrap; }
+
+.rank-list li.fav {
+  background: var(--cream);
+  border-left: 5px solid var(--peach);
+  padding-left: 0.6rem;
+}
+.rank-list li.fav .rank-name { color: var(--peach); }
+.rank-list li.fav .rank-pos  { color: var(--ink); }
+
+.rank-key {
+  color: var(--muted);
+  font-size: 19px;
+  margin-top: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  #d-score { font-size: 34px; }
+  .d-board-stats { gap: 0.8rem; }
+  .d-stat { font-size: 17px; }
+  .d-stat b { font-size: 20px; }
+  .rank-cash { font-size: 16px; }
+}

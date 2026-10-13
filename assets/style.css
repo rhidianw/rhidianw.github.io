@@ -114,6 +114,7 @@ section, .about-box {
 section.work      { box-shadow: 6px 6px 0 var(--peach); }
 section.projects  { box-shadow: 6px 6px 0 var(--blue); }
 section.plain     { box-shadow: 6px 6px 0 var(--mint); }
+section.darts     { box-shadow: 6px 6px 0 var(--peach); }
 
 /* ---- headings ------------------------------------------------------ */
 h1 {

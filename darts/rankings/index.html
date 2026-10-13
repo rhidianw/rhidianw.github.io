@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Oche — world rankings</title>
+  <meta name="description" content="PDC Order of Merit, with the seven players I actually watch for.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/darts.css">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">rhidian.exe</a>
+    <span class="links">
+      <a href="/">Home</a>
+      <a href="/darts/">Darts</a>
+      <button class="theme-toggle" aria-label="Toggle light and dark theme">☾</button>
+    </span>
+  </nav>
+
+  <main>
+    <div class="about-box">
+      <h1>The <span class="accent">Oche</span></h1>
+      <div class="sparkles">✦ ✧ ✦</div>
+      <p style="margin-top:0.75rem">You hit a treble twenty, so you have earned the good page. This is the PDC Order of Merit — the two-year rolling prize money list that decides who is seeded and who has to qualify.</p>
+      <p class="fun-line" id="rk-asof"></p>
+    </div>
+
+    <section class="work" id="favourites">
+      <h2>My seven</h2>
+      <p>Jonny Clayton, Luke Humphries, Luke Littler, James Wade, Gary Anderson, Michael van Gerwen and Gerwyn Price. Picked over years and for no consistent reason — some for the throw, some for the temperament, one purely for the walk-on.</p>
+      <p>Pleasingly, as things stand, <strong>every one of them is in the world's top ten</strong>. This will not last and I intend to enjoy it while it does.</p>
+    </section>
+
+    <section class="projects" id="table">
+      <h2>Order of Merit — top 32</h2>
+      <ul class="rank-list" id="rk-list"></ul>
+      <p class="rank-key">Highlighted rows are my seven. Prize money in £thousands, over the rolling two-year ranking period.</p>
+    </section>
+
+    <section class="plain" id="back">
+      <h2>Back to it</h2>
+      <p><a href="/darts/">← Another visit at the board</a></p>
+    </section>
+  </main>
+
+  <footer><a href="/">← back home</a></footer>
+
+  <script src="/assets/darts-data.js" defer></script>
+  <script src="/assets/rankings.js" defer></script>
+  <script src="/assets/theme.js" defer></script>
+</body>
+</html>

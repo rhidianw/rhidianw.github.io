@@ -8,7 +8,9 @@ Static personal site, no framework and no build step. Hosted on GitHub Pages.
 |---|---|
 | Home page copy | `index.html` |
 | CV | `cv/index.html` |
-| Books / films / games data | `assets/data.js` |
+| Darts game | `darts/index.html` + `assets/darts.js` |
+| Hidden rankings page | `darts/rankings/` — unlocked in-game by hitting treble 20 |
+| Darts facts & rankings data | `assets/darts-data.js` |
 | Colours, type, layout | `assets/style.css` (palette is the `:root` block at the top) |
 | Chart + list rendering | `assets/charts.js` |
 | Light/dark toggle | `assets/theme.js` |
