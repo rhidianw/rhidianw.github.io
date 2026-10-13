@@ -5,8 +5,6 @@
    Purely decorative: the layer is aria-hidden and ignores pointers.
    --------------------------------------------------------------------- */
 (function () {
-  if (!document.body.classList.contains('oche')) return;
-
   // Things you actually hear called out at a board.
   var SCORES = [
     '180', '140', '137', '121', '100', '95', '81', '60', '45', '26',

@@ -1,49 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Jersey+15&family=VT323&family=DotGothic16&display=swap');
 
 /* ---- palette ------------------------------------------------------- */
+/* The whole site runs the dartboard colours: black, white, red, green.
+   This is a committed dark theme — there is no light variant, which is
+   why there is no toggle anywhere. */
 :root {
-  color-scheme: light dark;
-  --cream: #fcf5ea;
-  --box:   #fffdf7;
-  --ink:   #3f4a5a;
-  --blue:  #7ab0c4;
-  --link:  #4f8aa3;
-  --mint:  #a9ddc9;
-  --sage:  #cbd9a6;
-  --peach: #e8945c;
-  --plum:  #b58fb8;
-  --muted: #8b93a3;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --cream: #1e222b;
-    --box:   #282e39;
-    --ink:   #e2e7f0;
-    --blue:  #6b9cb0;
-    --link:  #8fbbd0;
-    --mint:  #6fa38d;
-    --sage:  #97a873;
-    --peach: #d4894f;
-    --plum:  #9b7a9e;
-    --muted: #949cab;
-  }
-}
-
-/* manual toggle beats the system preference */
-:root[data-theme="light"] { color-scheme: light; }
-:root[data-theme="dark"] {
   color-scheme: dark;
-  --cream: #1e222b;
-  --box:   #282e39;
-  --ink:   #e2e7f0;
-  --blue:  #6b9cb0;
-  --link:  #8fbbd0;
-  --mint:  #6fa38d;
-  --sage:  #97a873;
-  --peach: #d4894f;
-  --plum:  #9b7a9e;
-  --muted: #949cab;
+
+  --black:   #0c0e10;
+  --panel:   #15181c;
+  --panel2:  #1d2126;
+  --white:   #f4f1e8;
+  --red:     #c8102e;
+  --green:   #00703c;
+  --green-l: #2e9e63;
+  --chalk:   #8e9099;
+
+  /* Component-facing names used throughout the rest of this file. */
+  --cream: var(--black);
+  --box:   var(--panel);
+  --ink:   var(--white);
+  --blue:  var(--green-l);
+  --link:  var(--green-l);
+  --mint:  var(--green);
+  --sage:  #2c3139;
+  --peach: var(--red);
+  --plum:  var(--red);
+  --muted: var(--chalk);
 }
 
 /* ---- base ---------------------------------------------------------- */
@@ -60,10 +43,63 @@ body {
   padding: 2rem 1.5rem 4rem;
 }
 
+/* ---- arrows in the background -------------------------------------- */
+/* A tiled field of darts behind every page. Fixed, so it does not scroll
+   away, and never intercepts a pointer. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-color: var(--black);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.09' stroke-width='2' stroke-linecap='round'%3E%3Cg transform='translate(18,52) rotate(-20)'%3E%3Cpath d='M0 0 L30 -30'/%3E%3Cpath d='M30 -30 L41 -27 M30 -30 L27 -41'/%3E%3C/g%3E%3Cg transform='translate(92,128) rotate(35)'%3E%3Cpath d='M0 0 L26 -26'/%3E%3Cpath d='M26 -26 L36 -23 M26 -26 L23 -36'/%3E%3C/g%3E%3Cg transform='translate(118,46) rotate(-62)'%3E%3Cpath d='M0 0 L24 -24'/%3E%3Cpath d='M24 -24 L33 -21 M24 -24 L21 -33'/%3E%3C/g%3E%3C/g%3E%3Cg stroke='none'%3E%3Cpath d='M18 52 L26 50 L20 44 Z' fill='%23c8102e' fill-opacity='0.3'/%3E%3Cpath d='M92 128 L100 126 L94 120 Z' fill='%2300703c' fill-opacity='0.34'/%3E%3Cpath d='M118 46 L126 44 L120 38 Z' fill='%23ffffff' fill-opacity='0.12'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Vignette so the centre column stays readable over the pattern. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 38%,
+              rgba(12,14,16,0.92) 0%,
+              rgba(12,14,16,0.72) 38%,
+              rgba(12,14,16,0.35) 100%);
+}
+
+/* ---- scores scattered round the frame ------------------------------ */
+#oche-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.oche-score {
+  position: absolute;
+  font-family: 'Jersey 15', monospace;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--white);
+  opacity: 0.17;
+  white-space: nowrap;
+  user-select: none;
+}
+.oche-score.red   { color: var(--red);     opacity: 0.3; }
+.oche-score.green { color: var(--green-l); opacity: 0.28; }
+.oche-score.big   { font-size: 46px; opacity: 0.13; }
+
+/* No gutters to put them in on a narrow screen. */
+@media (max-width: 1100px) { #oche-frame { display: none; } }
+
+nav, main, footer { position: relative; z-index: 1; }
+
 p { margin-bottom: 0.75rem; }
 a { color: var(--link); }
-main a:hover { background: var(--blue); color: var(--box); text-decoration: none; }
-strong { font-weight: 400; color: var(--peach); }
+main a:hover { background: var(--red); color: var(--white); text-decoration: none; }
+strong { font-weight: 400; color: var(--green-l); }
 
 /* ---- nav ----------------------------------------------------------- */
 nav {
@@ -76,33 +112,21 @@ nav {
   font-size: 24px;
   background: var(--box);
   border: 3px solid var(--ink);
-  box-shadow: 5px 5px 0 var(--blue);
+  box-shadow: 5px 5px 0 var(--red);
   padding: 0.5rem 1.1rem;
   margin-bottom: 3rem;
 }
 nav .brand { color: var(--ink); text-decoration: none; }
-nav .brand::before { content: '● '; color: var(--blue); }
+nav .brand::before { content: '✖ '; color: var(--red); }
 nav .brand:hover { color: var(--peach); }
 nav .links a {
   color: var(--ink);
   text-decoration: none;
   margin-left: 1.25rem;
 }
-nav .links a.active { color: var(--blue); }
+nav .links a.active { color: var(--green-l); }
 nav .links a:hover { color: var(--peach); background: none; }
 
-.theme-toggle {
-  font-family: inherit;
-  font-size: 22px;
-  color: var(--ink);
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin-left: 1.25rem;
-  padding: 0;
-  line-height: 1;
-}
-.theme-toggle:hover { color: var(--peach); }
 
 /* ---- cards --------------------------------------------------------- */
 section, .about-box {
@@ -111,11 +135,11 @@ section, .about-box {
   padding: 1.25rem 1.5rem;
   margin-bottom: 2.5rem;
 }
-.about-box        { box-shadow: 6px 6px 0 var(--sage); }
-section.work      { box-shadow: 6px 6px 0 var(--peach); }
-section.projects  { box-shadow: 6px 6px 0 var(--blue); }
-section.plain     { box-shadow: 6px 6px 0 var(--mint); }
-section.darts     { box-shadow: 6px 6px 0 var(--peach); }
+.about-box        { box-shadow: 6px 6px 0 var(--green); }
+section.work      { box-shadow: 6px 6px 0 var(--red); }
+section.projects  { box-shadow: 6px 6px 0 var(--green); }
+section.plain     { box-shadow: 6px 6px 0 var(--white); }
+section.darts     { box-shadow: 6px 6px 0 var(--red); }
 
 /* ---- headings ------------------------------------------------------ */
 h1 {
@@ -126,7 +150,7 @@ h1 {
   color: var(--ink);
   white-space: nowrap;
 }
-h1 .accent { color: var(--blue); }
+h1 .accent { color: var(--red); }
 
 h2 {
   font-family: 'Jersey 15', monospace;
@@ -135,7 +159,7 @@ h2 {
   color: var(--ink);
   margin-bottom: 0.75rem;
 }
-h2::before { content: '▸ '; color: var(--blue); }
+h2::before { content: '▸ '; color: var(--red); }
 
 h3 {
   font-family: 'Jersey 15', monospace;
@@ -165,13 +189,13 @@ h3 {
   width: 112px;
   height: 112px;
   object-fit: cover;
-  border: 4px solid var(--ink);
-  box-shadow: 6px 6px 0 var(--mint);
+  border: 4px solid var(--white);
+  box-shadow: 6px 6px 0 var(--green);
   image-rendering: pixelated;
 }
 .sparkles {
   font-size: 22px;
-  color: var(--peach);
+  color: var(--green-l);
   letter-spacing: 8px;
   margin-top: 8px;
 }
@@ -196,8 +220,8 @@ h3 {
 .proj-desc { color: var(--muted); font-size: 19px; }
 .tag {
   display: inline-block;
-  border: 2px solid var(--ink);
-  background: var(--cream);
+  border: 2px solid var(--chalk);
+  background: var(--panel2);
   font-size: 16px;
   line-height: 1;
   padding: 3px 6px 2px;
@@ -231,7 +255,7 @@ h3 {
 .cv-dates {
   font-family: 'Jersey 15', monospace;
   font-size: 20px;
-  color: var(--blue);
+  color: var(--green-l);
   white-space: nowrap;
 }
 .cv-where { color: var(--muted); font-size: 19px; margin-bottom: 0.5rem; }
@@ -239,7 +263,7 @@ h3 {
 
 .cv-entry ul { margin: 0.4rem 0 0.6rem 1.3rem; }
 .cv-entry li { margin-bottom: 0.35rem; padding-left: 0.2rem; }
-.cv-entry li::marker { color: var(--peach); content: '▪ '; }
+.cv-entry li::marker { color: var(--red); content: '▪ '; }
 
 /* skills grouped by kind: label on the left, tags on the right */
 .skill-group {
@@ -272,13 +296,13 @@ footer {
   color: var(--muted);
   margin-top: 3rem;
 }
-footer .heart { color: var(--blue); }
+footer .heart { color: var(--red); }
 
 /* ---- small screens ------------------------------------------------- */
 @media (max-width: 480px) {
   body { font-size: 21px; padding: 1.25rem 1rem 3rem; }
   nav { font-size: 20px; padding: 0.45rem 0.8rem; }
-  nav .links a, .theme-toggle { margin-left: 0.8rem; }
+  nav .links a { margin-left: 0.8rem; }
   h1 { font-size: 28px; white-space: normal; }
   section, .about-box { padding: 1rem 1.1rem; }
 }
