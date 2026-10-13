@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="112" height="112" shape-rendering="crispEdges" role="img" aria-label="Pixel-art placeholder portrait">
+  <rect width="16" height="16" fill="#a9ddc9"/>
+  <!-- hair -->
+  <rect x="4" y="2" width="8" height="2" fill="#3f4a5a"/>
+  <rect x="3" y="3" width="10" height="3" fill="#3f4a5a"/>
+  <!-- face -->
+  <rect x="4" y="4" width="8" height="6" fill="#f2d2b4"/>
+  <rect x="4" y="4" width="8" height="1" fill="#3f4a5a"/>
+  <!-- eyes -->
+  <rect x="6" y="6" width="1" height="2" fill="#3f4a5a"/>
+  <rect x="9" y="6" width="1" height="2" fill="#3f4a5a"/>
+  <!-- mouth -->
+  <rect x="7" y="9" width="2" height="1" fill="#c87a6a"/>
+  <!-- neck -->
+  <rect x="7" y="10" width="2" height="1" fill="#e0bb9c"/>
+  <!-- shoulders -->
+  <rect x="3" y="11" width="10" height="5" fill="#4f8aa3"/>
+  <rect x="7" y="11" width="2" height="2" fill="#fffdf7"/>
+</svg>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rhidian Williams</title>
+  <meta name="description" content="Rhidian Williams — data engineer and analyst at Nexus Brands Group.">
+  <link rel="icon" href="/assets/favicon.svg">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>
+    // Apply the saved theme before first paint so there is no flash.
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/">rhidian.exe</a>
+    <span class="links">
+      <a href="/" class="active">Home</a>
+      <a href="/cv/">CV</a>
+      <a href="https://www.linkedin.com/">LinkedIn</a>
+      <button class="theme-toggle" aria-label="Toggle light and dark theme">☾</button>
+    </span>
+  </nav>
+
+  <main>
+    <div class="about-box">
+      <h2>About me</h2>
+      <div class="about-head">
+        <img class="portrait" src="/assets/photo.svg" alt="Portrait of Rhidian Williams">
+        <div>
+          <h1>Rhidian <span class="accent">Williams</span></h1>
+          <div class="sparkles">✦ ✧ ✦</div>
+        </div>
+      </div>
+      <p>I work with data at <strong>Nexus Brands Group</strong>, where I build the pipelines, warehouses and reporting that a group of consumer brands runs on — pulling together NetSuite, Amazon, Magento and a pile of third-party feeds into something people can actually make decisions from.</p>
+      <p>Most of my time goes on the unglamorous half of analytics: getting the numbers to agree with each other. Stock that pools by one key and sells by another, listings that belong to the wrong account, flags that nobody has touched in three years. The dashboard is the easy part.</p>
+      <p>You can read my <a href="/cv/">CV</a> or find me on <a href="https://www.linkedin.com/">LinkedIn</a>.</p>
+    </div>
+
+    <section class="work" id="work">
+      <h2>What I actually do</h2>
+      <p>Nexus Brands is a group of businesses that sell physical products across a lot of channels at once — their own websites, Amazon in several countries, wholesale, third-party logistics partners. Every one of those channels has its own idea of what a product is, what it costs, and how many are left.</p>
+      <p>My job is to make one version of that story. That means <strong>ETL pipelines</strong> that land raw exports and API pulls into a warehouse on a schedule, a <strong>modelling layer</strong> that resolves the conflicts between them, and reporting on top that a buyer or a brand manager can read without a data person sitting next to them.</p>
+      <p>The interesting problems are almost always definitional rather than technical. Does "in stock" mean the warehouse has it, or that a customer can buy it today? If the same physical unit is poolable across four product codes, which one gets credited with the sale? Getting those answers written down and consistently applied is worth more than any amount of clever SQL.</p>
+      <p class="fun-line">Mostly SQL, Python, parquet, and a healthy suspicion of any number that looks too round.</p>
+    </section>
+
+    <section class="projects" id="projects">
+      <h2>Projects</h2>
+      <ul class="proj-list">
+        <li>
+          <span class="proj-name">Group data warehouse</span>
+          <div class="proj-desc">A single reporting warehouse spanning the group's operating companies — nightly ETL from NetSuite, channel APIs and partner feeds, modelled into shared sales, stock and margin tables.</div>
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">parquet</span>
+        </li>
+        <li>
+          <span class="proj-name">Channel listing reconciliation</span>
+          <div class="proj-desc">Cross-checks what we think we sell against what each marketplace says is live, so discontinued lines stop quietly selling and new lines stop quietly not selling.</div>
+          <span class="tag">APIs</span><span class="tag">data quality</span>
+        </li>
+        <li>
+          <span class="proj-name">Stock &amp; replenishment reporting</span>
+          <div class="proj-desc">Cover, run-rate and reorder views that account for how stock actually pools across codes and warehouses rather than assuming one row equals one product.</div>
+          <span class="tag">SQL</span><span class="tag">forecasting</span>
+        </li>
+        <li>
+          <a class="proj-name" href="https://github.com/">This website</a>
+          <div class="proj-desc">Static HTML, hand-written CSS, no framework and no build step. Hosted on GitHub Pages.</div>
+          <span class="tag">HTML</span><span class="tag">CSS</span>
+        </li>
+      </ul>
+      <p class="fun-line">Placeholder descriptions — swap these for the real ones whenever you like.</p>
+    </section>
+
+    <section class="reading" id="reading">
+      <h2>Reading</h2>
+      <div class="list-title">Recently read (hover a spine):</div>
+      <div class="bookshelf" id="book-list"></div>
+      <div class="goal-meter" id="goal-meter"></div>
+      <div class="chart" id="books-year">
+        <h4>Books read per year</h4>
+        <div class="chart-body"></div>
+      </div>
+      <p class="fun-line" id="book-fun"></p>
+    </section>
+
+    <section class="watching" id="watching">
+      <h2>Watching</h2>
+      <div class="four-title">My four</div>
+      <div class="four-grid" id="four-grid"></div>
+      <div class="list-title">Recently watched:</div>
+      <ul class="media-list" id="film-list"></ul>
+      <p class="fun-line" id="film-fun"></p>
+      <div class="chart" id="film-ratings">
+        <h4>How I rate them (½–5 stars)</h4>
+        <div class="chart-body"></div>
+      </div>
+    </section>
+
+    <section class="playing" id="playing">
+      <h2>Playing</h2>
+      <p class="fun-line" id="trophy-line"></p>
+      <div class="trophy-row" id="trophy-row"></div>
+      <div class="list-title">Recently played:</div>
+      <ul class="media-list" id="psn-list"></ul>
+    </section>
+  </main>
+
+  <footer>Made with <span class="heart">♥</span> and no JavaScript frameworks · © 2026</footer>
+
+  <script src="/assets/data.js" defer></script>
+  <script src="/assets/charts.js" defer></script>
+  <script src="/assets/theme.js" defer></script>
+</body>
+</html>
