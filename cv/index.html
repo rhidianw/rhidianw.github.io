@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV — Rhidian Williams</title>
-  <meta name="description" content="Curriculum vitae for Rhidian Williams — data engineer specialising in ETL, warehousing and multi-channel data reconciliation.">
+  <meta name="description" content="Curriculum vitae for Rhidian Williams — data scientist and engineer. Pipelines, data quality, cloud platforms and analytics.">
   <link rel="icon" href="/assets/favicon.svg">
   <link rel="stylesheet" href="/assets/style.css">
   <script>
@@ -26,124 +26,201 @@
     <div class="about-box">
       <h1>Rhidian <span class="accent">Williams</span></h1>
       <div class="sparkles">✦ ✧ ✦</div>
-      <p class="cv-strap">Data Engineer · ETL, warehousing and multi-channel reconciliation</p>
+      <p class="cv-strap">Data Scientist &amp; Engineer · York, United Kingdom</p>
     </div>
 
     <section class="work" id="profile">
-      <h2>Profile</h2>
-      <p>Data engineer working across the full path from source system to decision: ingestion, warehousing, modelling and the reporting layer on top. My work sits in multi-channel consumer goods, where the same product exists simultaneously in an ERP, several marketplaces, an ecommerce platform and a third-party logistics system — each with its own identifiers, its own definition of availability, and no agreement between them.</p>
-      <p>I'm strongest at the integration end: making unreliable feeds land reliably, resolving identity between systems that were never designed to talk to each other, and building models that stay correct when a source system changes shape without warning. I care more about a number being defensible than a dashboard being pretty.</p>
+      <h2>Professional summary</h2>
+      <p>Data scientist and engineer with expertise in <strong>SQL, Python, PySpark and C++</strong>, and cloud data platforms including <strong>Snowflake</strong> and <strong>Databricks</strong>. Experienced in building automated pipelines, improving data quality, and delivering actionable insight from complex datasets.</p>
+      <p>Skilled across data engineering, data architecture, analytics and stakeholder engagement, with a track record of delivering high-impact projects quickly and with measurable operational and strategic results. Background in experimental physics, where the data was measured in terabytes and nobody would accept a number they could not trace.</p>
     </section>
 
     <section class="projects" id="experience">
-      <h2>Experience</h2>
+      <h2>Employment history</h2>
 
       <div class="cv-entry">
         <div class="cv-head">
           <span class="cv-role">Data Engineer</span>
-          <span class="cv-dates">20XX – present</span>
+          <span class="cv-dates">20XX – Present</span>
         </div>
         <div class="cv-where">Nexus Brands Group</div>
-        <p class="cv-context">Part of a small central data team supporting the group's operating companies, each selling physical products across its own mix of direct, marketplace and wholesale channels.</p>
+        <p class="cv-context">Part of a small central data team supporting a multi-brand consumer goods group, where each operating company sells across its own mix of direct, marketplace and wholesale channels.</p>
         <ul>
-          <li>Build and maintain the group reporting warehouse on MariaDB — the single source that downstream sales, stock, margin and catalogue reporting is built on.</li>
-          <li>Own the scheduled ETL estate: Python jobs on a Linux host that pull from the ERP, marketplace APIs, an integration platform and partner flat-file drops, landing to a columnar staging layer before load so failed runs can be replayed without re-hitting source systems.</li>
-          <li>Design the modelling layer that reconciles identity and definitions across those systems — which identifier is authoritative, what counts as sellable stock, and which fields have quietly stopped being maintained.</li>
-          <li>Re-modelled marketplace fulfilment inventory after establishing that stock pools at the barcode level rather than the SKU level, removing a substantial systematic overstatement from reported stock cover.</li>
-          <li>Built catalogue reconciliation between the ERP and live marketplace and storefront listings, surfacing listings attributed to the wrong seller account and lines that were discontinued in one system but still selling in another.</li>
-          <li>Integrated subscription and replenishment data from a marketplace API with non-standard pagination, including a pre-save transform to normalise discount tiers before the feed lands.</li>
-          <li>Built product compliance screening that cross-references catalogue attributes against dangerous-goods declarations, flagging mismatches before the marketplace finds them and suppresses the listing.</li>
+          <li>Build and maintain the group reporting warehouse — the single source behind downstream sales, stock, margin and catalogue reporting.</li>
+          <li>Own the scheduled ETL estate: Python jobs pulling from the ERP, marketplace APIs, an integration platform and partner flat-file drops, landing to a columnar staging layer so failed runs replay without re-hitting source systems.</li>
+          <li>Design the modelling layer that reconciles identity and definitions across systems — which identifier is authoritative, what counts as sellable stock, and which fields have quietly stopped being maintained.</li>
+          <li>Re-modelled marketplace fulfilment inventory after establishing that stock pools at barcode level rather than SKU level, removing a substantial systematic overstatement from reported stock cover.</li>
+          <li>Built catalogue reconciliation between the ERP and live marketplace listings, surfacing listings attributed to the wrong seller account and lines discontinued in one system but still selling in another.</li>
+          <li>Built product compliance screening that cross-references catalogue attributes against dangerous-goods declarations, flagging mismatches before a marketplace finds them and suppresses the listing.</li>
           <li>Work directly with buying, brand and operations teams to turn ambiguous questions into defined, repeatable measures.</li>
         </ul>
-        <span class="tag">MariaDB</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">parquet</span><span class="tag">REST APIs</span><span class="tag">Linux</span><span class="tag">cron</span>
+        <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">MariaDB</span><span class="tag">parquet</span><span class="tag">REST APIs</span><span class="tag">Linux</span>
       </div>
 
       <div class="cv-entry">
         <div class="cv-head">
-          <span class="cv-role">Previous role</span>
-          <span class="cv-dates">20XX – 20XX</span>
+          <span class="cv-role">Data Quality Analyst</span>
+          <span class="cv-dates">Oct 2024 – 20XX</span>
         </div>
-        <div class="cv-where">Company name</div>
-        <p class="cv-context">One line of context on the organisation and where this role sat.</p>
+        <div class="cv-where">Companies House</div>
+        <p class="cv-context">Responsible for delivering automated data pipelines, improving address data quality, and providing actionable insight for fraud prevention and operational efficiency. Worked closely with data architects and engineers to optimise ingestion workflows, implement robust validation, and provide decision-ready metrics.</p>
         <ul>
-          <li>Replace with a responsibility, framed as what you owned rather than what you touched.</li>
-          <li>Replace with an achievement — ideally one with a number attached.</li>
-          <li>Replace with something that shows range beyond the day job.</li>
+          <li>Delivered Year 1 objectives in 3 months, accelerating expected project timelines by 200%.</li>
+          <li>Built an address-matching pipeline improving data quality by 40%, projected to save over £3–4M annually in postage and handling.</li>
+          <li>Completed thorough analysis of returned mail data, identifying root causes and actionable recommendations.</li>
+          <li>Applied machine learning techniques — regression and time-series forecasting — to predict address data trends and support operational decision-making.</li>
+          <li>Designed and implemented automated pipelines in Snowflake and PySpark, producing daily data quality metrics within 6 months.</li>
+          <li>Partnered with data architects to redesign ingestion processes, improving efficiency and reliability.</li>
+          <li>Enhanced front-end validation through key analysis discoveries, improving data reliability by over 20%.</li>
+          <li>Introduced Git workflows and coding standards, improving collaboration and reducing duplicated work by up to 30%.</li>
         </ul>
-        <span class="tag">tech</span><span class="tag">used</span><span class="tag">here</span>
+        <span class="tag">Snowflake</span><span class="tag">PySpark</span><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">machine learning</span><span class="tag">Git</span>
       </div>
 
       <div class="cv-entry">
         <div class="cv-head">
-          <span class="cv-role">Earlier role</span>
-          <span class="cv-dates">20XX – 20XX</span>
+          <span class="cv-role">Ph.D. in Physics</span>
+          <span class="cv-dates">Oct 2020 – Sep 2024</span>
         </div>
-        <div class="cv-where">Company name</div>
+        <div class="cv-where">University of York</div>
+        <p class="cv-context">Led high-impact experimental physics research, developing analytical pipelines and guiding updates to global theoretical models, influencing experimental planning and departmental strategy.</p>
         <ul>
-          <li>Older roles can be shorter — one or two lines is plenty.</li>
+          <li>Delivered two major analyses within the first 6 months, shaping a new research direction and influencing experimental planning.</li>
+          <li>Developed automated C++ and ROOT pipelines for multi-terabyte data ingestion, cleansing, analysis and visualisation.</li>
+          <li>Guided updates to theoretical models, improving simulation accuracy and influencing global experimental design.</li>
+          <li>Expanded international datasets by 3×, directly supporting departmental funding and new research positions.</li>
+          <li>Supervised and mentored undergraduate and Master's students in advanced data workflows and analysis pipelines.</li>
+          <li>Collaborated on next-generation experiments, providing analysis pipelines and insight for experimental proposals.</li>
+        </ul>
+        <span class="tag">C++</span><span class="tag">ROOT</span><span class="tag">Python</span><span class="tag">Linux</span><span class="tag">multi-TB data</span>
+      </div>
+    </section>
+
+    <section class="plain" id="additional-experience">
+      <h2>Additional experience</h2>
+
+      <div class="cv-entry">
+        <div class="cv-head">
+          <span class="cv-role">University Teaching Assistant</span>
+          <span class="cv-dates">Oct 2020 – Sep 2024</span>
+        </div>
+        <div class="cv-where">University of York</div>
+        <ul>
+          <li>Led the Python programming module for 100+ students, delivering practical programming and data analysis skills.</li>
+          <li>Developed teaching materials and mentored students in statistical and data analysis techniques.</li>
+        </ul>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-head">
+          <span class="cv-role">Research Internship</span>
+          <span class="cv-dates">Aug – Sep 2018</span>
+        </div>
+        <div class="cv-where">Swansea University</div>
+        <ul>
+          <li>Designed real-time analysis software for a Raman spectrometer, delivering actionable insight for cancer detection research within 4 weeks.</li>
         </ul>
       </div>
     </section>
 
-    <section class="plain" id="skills">
+    <section class="work" id="skills">
       <h2>Technical skills</h2>
-
-      <div class="skill-group">
-        <div class="skill-label">Languages</div>
-        <div class="skill-tags">
-          <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">JavaScript</span>
-          <span class="tag">Bash</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <div class="skill-label">Data &amp; storage</div>
-        <div class="skill-tags">
-          <span class="tag">MariaDB / MySQL</span><span class="tag">parquet</span><span class="tag">pandas</span>
-          <span class="tag">dimensional modelling</span><span class="tag">query optimisation</span>
-        </div>
-      </div>
 
       <div class="skill-group">
         <div class="skill-label">Pipelines</div>
         <div class="skill-tags">
-          <span class="tag">ETL / ELT design</span><span class="tag">REST API integration</span>
-          <span class="tag">iPaaS platforms</span><span class="tag">cron scheduling</span>
-          <span class="tag">incremental loads</span><span class="tag">idempotent replay</span>
+          <span class="tag">PySpark</span><span class="tag">SQL</span><span class="tag">ETL / ELT design</span>
+          <span class="tag">structured &amp; semi-structured data</span><span class="tag">workflow orchestration</span>
         </div>
       </div>
 
       <div class="skill-group">
-        <div class="skill-label">Domain</div>
+        <div class="skill-label">Cloud platforms</div>
         <div class="skill-tags">
-          <span class="tag">ERP data</span><span class="tag">marketplace APIs</span>
-          <span class="tag">ecommerce catalogues</span><span class="tag">inventory &amp; stock cover</span>
-          <span class="tag">margin reporting</span><span class="tag">data quality</span>
+          <span class="tag">Snowflake</span><span class="tag">Databricks</span>
+          <span class="tag">Azure pipelines</span><span class="tag">dbt concepts</span>
         </div>
       </div>
 
       <div class="skill-group">
-        <div class="skill-label">Tooling</div>
+        <div class="skill-label">Programming</div>
         <div class="skill-tags">
-          <span class="tag">Linux</span><span class="tag">Git</span><span class="tag">shell automation</span>
+          <span class="tag">Python</span><span class="tag">C++</span><span class="tag">PySpark</span>
+          <span class="tag">Bash</span><span class="tag">Linux</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-label">Analysis &amp; stats</div>
+        <div class="skill-tags">
+          <span class="tag">regression</span><span class="tag">classification</span>
+          <span class="tag">clustering</span><span class="tag">forecasting</span>
+          <span class="tag">large-scale datasets</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-label">Architecture</div>
+        <div class="skill-tags">
+          <span class="tag">relational modelling</span><span class="tag">dimensional modelling</span>
+          <span class="tag">schema design</span><span class="tag">data quality</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-label">Visualisation</div>
+        <div class="skill-tags">
+          <span class="tag">Power BI</span><span class="tag">ROOT</span><span class="tag">Python viz</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-label">Collaboration</div>
+        <div class="skill-tags">
+          <span class="tag">Git workflows</span><span class="tag">code review</span>
+          <span class="tag">Agile</span><span class="tag">stakeholder engagement</span>
         </div>
       </div>
     </section>
 
-    <section class="work" id="education">
+    <section class="projects" id="education">
       <h2>Education</h2>
+
       <div class="cv-entry">
         <div class="cv-head">
-          <span class="cv-role">Degree subject</span>
-          <span class="cv-dates">20XX – 20XX</span>
+          <span class="cv-role">Ph.D. in Physics</span>
+          <span class="cv-dates">Oct 2020 – Sep 2024</span>
         </div>
-        <div class="cv-where">Institution · grade</div>
+        <div class="cv-where">University of York</div>
+        <p class="cv-context">Key skills: data pipelines, multi-terabyte data analysis, C++, ROOT, Python, Linux, Git.</p>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-head">
+          <span class="cv-role">MSci in Physics</span>
+          <span class="cv-dates">Oct 2016 – Jul 2020</span>
+        </div>
+        <div class="cv-where">Swansea University · First Class Honours — weighted average 90.27%</div>
+        <p class="cv-context">Key skills: Python, SQL, Mathematica, data modelling, statistical analysis.</p>
       </div>
     </section>
 
-    <section class="plain" id="contact">
-      <h2>Contact</h2>
-      <p>Add a contact route here — an email address, or whichever you prefer.</p>
+    <section class="plain" id="achievements">
+      <h2>Additional achievements</h2>
+      <ul class="proj-list">
+        <li>
+          <span class="proj-name">Best Theoretical Physics Project Award</span>
+          <div class="proj-desc">University of York, 2020</div>
+        </li>
+        <li>
+          <span class="proj-name">Talk Prize</span>
+          <div class="proj-desc">HUGS International Summer School, 2022</div>
+        </li>
+        <li>
+          <span class="proj-name">Jefferson Lab research attachment</span>
+          <div class="proj-desc">Competitive 3-month placement, Virginia, USA</div>
+        </li>
+      </ul>
     </section>
   </main>
 
