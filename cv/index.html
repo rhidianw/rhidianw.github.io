@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV — Rhidian Williams</title>
-  <meta name="description" content="CV for Rhidian Williams — data engineer and analyst.">
+  <meta name="description" content="Curriculum vitae for Rhidian Williams — data engineer specialising in ETL, warehousing and multi-channel data reconciliation.">
   <link rel="icon" href="/assets/favicon.svg">
   <link rel="stylesheet" href="/assets/style.css">
   <script>
+    // Apply the saved theme before first paint so there is no flash.
     try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
   </script>
 </head>
@@ -17,7 +18,6 @@
     <span class="links">
       <a href="/">Home</a>
       <a href="/cv/" class="active">CV</a>
-      <a href="https://www.linkedin.com/">LinkedIn</a>
       <button class="theme-toggle" aria-label="Toggle light and dark theme">☾</button>
     </span>
   </nav>
@@ -26,53 +26,124 @@
     <div class="about-box">
       <h1>Rhidian <span class="accent">Williams</span></h1>
       <div class="sparkles">✦ ✧ ✦</div>
-      <p style="margin-top:0.75rem">Data engineer. I build the pipelines, warehouse and models that turn a group of separate operating companies into one set of numbers.</p>
+      <p class="cv-strap">Data Engineer · ETL, warehousing and multi-channel reconciliation</p>
     </div>
 
-    <section class="work">
+    <section class="work" id="profile">
+      <h2>Profile</h2>
+      <p>Data engineer working across the full path from source system to decision: ingestion, warehousing, modelling and the reporting layer on top. My work sits in multi-channel consumer goods, where the same product exists simultaneously in an ERP, several marketplaces, an ecommerce platform and a third-party logistics system — each with its own identifiers, its own definition of availability, and no agreement between them.</p>
+      <p>I'm strongest at the integration end: making unreliable feeds land reliably, resolving identity between systems that were never designed to talk to each other, and building models that stay correct when a source system changes shape without warning. I care more about a number being defensible than a dashboard being pretty.</p>
+    </section>
+
+    <section class="projects" id="experience">
       <h2>Experience</h2>
 
       <div class="cv-entry">
-        <div class="cv-role">Data Engineer</div>
-        <div class="cv-where">Nexus Brands Group · 20XX – present</div>
+        <div class="cv-head">
+          <span class="cv-role">Data Engineer</span>
+          <span class="cv-dates">20XX – present</span>
+        </div>
+        <div class="cv-where">Nexus Brands Group</div>
+        <p class="cv-context">Part of a small central data team supporting the group's operating companies, each selling physical products across its own mix of direct, marketplace and wholesale channels.</p>
         <ul>
-          <li>Built and maintain group-wide ETL pipelines across NetSuite, marketplace APIs and partner feeds.</li>
-          <li>Own the modelling layer that reconciles stock, sales and listing data between channels.</li>
-          <li>Deliver reporting used by buying, brand and ops teams across the group's businesses.</li>
+          <li>Build and maintain the group reporting warehouse on MariaDB — the single source that downstream sales, stock, margin and catalogue reporting is built on.</li>
+          <li>Own the scheduled ETL estate: Python jobs on a Linux host that pull from the ERP, marketplace APIs, an integration platform and partner flat-file drops, landing to a columnar staging layer before load so failed runs can be replayed without re-hitting source systems.</li>
+          <li>Design the modelling layer that reconciles identity and definitions across those systems — which identifier is authoritative, what counts as sellable stock, and which fields have quietly stopped being maintained.</li>
+          <li>Re-modelled marketplace fulfilment inventory after establishing that stock pools at the barcode level rather than the SKU level, removing a substantial systematic overstatement from reported stock cover.</li>
+          <li>Built catalogue reconciliation between the ERP and live marketplace and storefront listings, surfacing listings attributed to the wrong seller account and lines that were discontinued in one system but still selling in another.</li>
+          <li>Integrated subscription and replenishment data from a marketplace API with non-standard pagination, including a pre-save transform to normalise discount tiers before the feed lands.</li>
+          <li>Built product compliance screening that cross-references catalogue attributes against dangerous-goods declarations, flagging mismatches before the marketplace finds them and suppresses the listing.</li>
+          <li>Work directly with buying, brand and operations teams to turn ambiguous questions into defined, repeatable measures.</li>
         </ul>
+        <span class="tag">MariaDB</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">parquet</span><span class="tag">REST APIs</span><span class="tag">Linux</span><span class="tag">cron</span>
       </div>
 
       <div class="cv-entry">
-        <div class="cv-role">Previous role</div>
-        <div class="cv-where">Company · 20XX – 20XX</div>
+        <div class="cv-head">
+          <span class="cv-role">Previous role</span>
+          <span class="cv-dates">20XX – 20XX</span>
+        </div>
+        <div class="cv-where">Company name</div>
+        <p class="cv-context">One line of context on the organisation and where this role sat.</p>
         <ul>
-          <li>Replace this entry with your actual history.</li>
+          <li>Replace with a responsibility, framed as what you owned rather than what you touched.</li>
+          <li>Replace with an achievement — ideally one with a number attached.</li>
+          <li>Replace with something that shows range beyond the day job.</li>
+        </ul>
+        <span class="tag">tech</span><span class="tag">used</span><span class="tag">here</span>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-head">
+          <span class="cv-role">Earlier role</span>
+          <span class="cv-dates">20XX – 20XX</span>
+        </div>
+        <div class="cv-where">Company name</div>
+        <ul>
+          <li>Older roles can be shorter — one or two lines is plenty.</li>
         </ul>
       </div>
     </section>
 
-    <section class="projects">
-      <h2>Skills</h2>
-      <p>
-        <span class="tag">SQL</span><span class="tag">MariaDB / MySQL</span><span class="tag">Python</span>
-        <span class="tag">pandas</span><span class="tag">parquet</span><span class="tag">ETL design</span>
-        <span class="tag">data modelling</span><span class="tag">REST APIs</span>
-        <span class="tag">iPaaS integrations</span><span class="tag">cron / scheduling</span>
-        <span class="tag">Linux</span><span class="tag">Git</span><span class="tag">data quality</span>
-      </p>
+    <section class="plain" id="skills">
+      <h2>Technical skills</h2>
+
+      <div class="skill-group">
+        <div class="skill-label">Languages</div>
+        <div class="skill-tags">
+          <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">JavaScript</span>
+          <span class="tag">Bash</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-label">Data &amp; storage</div>
+        <div class="skill-tags">
+          <span class="tag">MariaDB / MySQL</span><span class="tag">parquet</span><span class="tag">pandas</span>
+          <span class="tag">dimensional modelling</span><span class="tag">query optimisation</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-label">Pipelines</div>
+        <div class="skill-tags">
+          <span class="tag">ETL / ELT design</span><span class="tag">REST API integration</span>
+          <span class="tag">iPaaS platforms</span><span class="tag">cron scheduling</span>
+          <span class="tag">incremental loads</span><span class="tag">idempotent replay</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-label">Domain</div>
+        <div class="skill-tags">
+          <span class="tag">ERP data</span><span class="tag">marketplace APIs</span>
+          <span class="tag">ecommerce catalogues</span><span class="tag">inventory &amp; stock cover</span>
+          <span class="tag">margin reporting</span><span class="tag">data quality</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-label">Tooling</div>
+        <div class="skill-tags">
+          <span class="tag">Linux</span><span class="tag">Git</span><span class="tag">shell automation</span>
+        </div>
+      </div>
     </section>
 
-    <section class="plain">
+    <section class="work" id="education">
       <h2>Education</h2>
       <div class="cv-entry">
-        <div class="cv-role">Degree</div>
-        <div class="cv-where">University · 20XX – 20XX</div>
+        <div class="cv-head">
+          <span class="cv-role">Degree subject</span>
+          <span class="cv-dates">20XX – 20XX</span>
+        </div>
+        <div class="cv-where">Institution · grade</div>
       </div>
     </section>
 
-    <section class="work">
+    <section class="plain" id="contact">
       <h2>Contact</h2>
-      <p>Best reached on <a href="https://www.linkedin.com/">LinkedIn</a>.</p>
+      <p>Add a contact route here — an email address, or whichever you prefer.</p>
     </section>
   </main>
 
